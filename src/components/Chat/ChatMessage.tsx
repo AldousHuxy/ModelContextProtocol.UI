@@ -1,4 +1,5 @@
 import { useAgent } from '@/context/AgentContext';
+import type { Pill } from '@/types/pill';
 import { useRef, useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
@@ -11,7 +12,7 @@ type ChatMessageForm = z.infer<typeof chatMessageSchema>;
 
 type ChatMessageProps = {
   isDarkMode: boolean;
-  pills: Array<{ id: number; label: string; text: string; color?: string }>;
+  pills: Pill[];
 };
 
 export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
