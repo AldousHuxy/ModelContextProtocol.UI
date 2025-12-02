@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <nav className={`flex items-center justify-between gap-4 p-4 transition-colors duration-300 ${isDarkMode ? 'bg-slate-700' : 'bg-slate-400'}`}>
         <div className="flex items-center gap-4">
-          <h1 className="font-bold text-xl text-white">Letter's of Map Change Chatbot</h1>
+          <h1 className="font-bold text-lg text-white">Letter's of Map Change Chatbot</h1>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative">

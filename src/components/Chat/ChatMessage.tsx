@@ -59,13 +59,13 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
   return (
     <div className="space-y-2">
       {/* Suggestion Pills */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
         {pills.map(pill => (
           <button
             key={pill.id}
             type="button"
             onClick={() => handlePillClick(pill.text)}
-            className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
               isDarkMode 
                 ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' 
                 : pill.color === 'grey' 
