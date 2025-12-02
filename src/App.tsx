@@ -15,7 +15,7 @@ const App = () => {
       <Header />
       <Navbar />
       <div className="flex-1 overflow-hidden relative">
-        <div className={`h-full transition-all duration-300 ${isSidebarOpen ? 'mr-80' : 'mr-0'}`}>
+        <div className={`h-full transition-all duration-300 ${isSidebarOpen ? 'lg:mr-80' : 'mr-0'}`}>
           <Outlet />
         </div>
         <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
