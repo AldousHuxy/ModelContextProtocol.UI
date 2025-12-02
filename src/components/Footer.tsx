@@ -1,8 +1,7 @@
-type FooterProps = {
-  isDarkMode: boolean;
-};
+import { useModeContext } from "@/context/ModeContext";
 
-export const Footer = ({ isDarkMode }: FooterProps) => {
+export const Footer = () => {
+    const { isDarkMode } = useModeContext();
     const year = new Date().getFullYear();
 
     return (

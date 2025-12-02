@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import mhfdLogo from '../assets/images/mhfd-logo.svg';
 import type { Agent } from '@/types/agent';
+import { useModeContext } from '@/context/ModeContext';
 
-type HeaderProps = {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-};
-
-export const Header = ({ isDarkMode, toggleDarkMode }: HeaderProps) => {
+export const Header = () => {
+  const { isDarkMode, toggleDarkMode } = useModeContext();
+  
   const agents: Agent[] = [
     {
       id: 'gemini',

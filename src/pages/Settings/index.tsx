@@ -1,9 +1,9 @@
-type SettingsProps = {
-  isDarkMode: boolean;
-};
+import { useModeContext } from "@/context/ModeContext";
 
-export const Settings = ({ isDarkMode }: SettingsProps) => {
-  return (
+const Settings = () => {
+  const { isDarkMode } = useModeContext();
+
+    return (
     <main className="h-full flex flex-col p-4 sm:p-6 gap-4">
       <div className={`rounded-2xl shadow-lg border p-6 transition-colors ${
         isDarkMode 
@@ -112,3 +112,5 @@ export const Settings = ({ isDarkMode }: SettingsProps) => {
     </main>
   );
 };
+
+export default Settings;

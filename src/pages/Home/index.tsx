@@ -1,9 +1,12 @@
+import { useModeContext } from '@/context/ModeContext';
 import { Main } from '../../components/Main';
 
-type HomeProps = {
-  isDarkMode: boolean;
+const Home = () => {
+  const { isDarkMode } = useModeContext();
+
+  return (
+    <Main isDarkMode={isDarkMode} />
+  );
 };
 
-export const Home = ({ isDarkMode }: HomeProps) => {
-  return <Main isDarkMode={isDarkMode} />;
-};
+export default Home;
