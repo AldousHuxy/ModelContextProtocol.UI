@@ -1,52 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import mhfdLogo from '../assets/images/mhfd-logo.svg';
-import type { Agent } from '@/types/agent';
 import { useModeContext } from '@/context/ModeContext';
+import { useAgent } from '@/context/AgentContext';
 
 export const Header = () => {
   const { isDarkMode, toggleDarkMode } = useModeContext();
   
-  const agents: Agent[] = [
-    {
-      id: 'gemini',
-      name: 'Gemini',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 2.18l8 4v8.82c0 4.52-3.07 8.77-7.5 9.93-.37.1-.76.1-1.13 0C7.07 25.77 4 21.52 4 17V8.18l8-4z"/>
-        </svg>
-      ),
-    },
-    {
-      id: 'claude',
-      name: 'Claude',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.45 15.18L12 7.27l-5.45 7.91A8.99 8.99 0 0112 21a8.99 8.99 0 015.45-5.82zM12 3a9 9 0 00-9 9c0 2.64 1.15 5.01 2.97 6.65L12 9.73l6.03 8.92A8.97 8.97 0 0021 12a9 9 0 00-9-9z"/>
-        </svg>
-      ),
-    },
-    {
-      id: 'gpt',
-      name: 'GPT',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M22.282 9.821a5.985 5.985 0 00-.516-4.91 6.046 6.046 0 00-6.51-2.9A6.065 6.065 0 004.981 4.18a5.985 5.985 0 00-3.998 2.9 6.046 6.046 0 00.743 7.097 5.98 5.98 0 00.51 4.911 6.051 6.051 0 006.515 2.9A5.985 5.985 0 0013.26 24a6.056 6.056 0 005.772-4.206 5.99 5.99 0 003.997-2.9 6.056 6.056 0 00-.747-7.073zM13.26 22.43a4.476 4.476 0 01-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 00.392-.681v-6.737l2.02 1.168a.071.071 0 01.038.052v5.583a4.504 4.504 0 01-4.494 4.494zM3.6 18.304a4.47 4.47 0 01-.535-3.014l.142.085 4.783 2.759a.771.771 0 00.78 0l5.843-3.369v2.332a.08.08 0 01-.033.062L9.74 19.95a4.5 4.5 0 01-6.14-1.646zM2.34 7.896a4.485 4.485 0 012.366-1.973V11.6a.766.766 0 00.388.676l5.815 3.355-2.02 1.168a.076.076 0 01-.071 0l-4.83-2.786A4.504 4.504 0 012.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 01.071 0l4.83 2.791a4.494 4.494 0 01-.676 8.105v-5.678a.79.79 0 00-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 00-.785 0L9.409 9.23V6.897a.066.066 0 01.028-.061l4.83-2.787a4.5 4.5 0 016.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 01-.038-.057V6.075a4.5 4.5 0 017.375-3.453l-.142.08L8.704 5.46a.795.795 0 00-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/>
-        </svg>
-      ),
-    },
-    {
-      id: 'copilot',
-      name: 'Copilot',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-      ),
-    },
-  ];
+  const { agents, selectedAgent, changeSelectedAgent } = useAgent();
 
-  const [selectedAgent, setSelectedAgent] = useState<Agent>(agents[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -54,7 +16,7 @@ export const Header = () => {
     <header className={`flex items-center justify-between gap-4 p-4 transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-mhfd-dark-blue'}`}>
         <div className="flex items-center gap-4">
           <img src={mhfdLogo} alt="MHFD Logo" className="cursor-pointer h-15" onClick={() => navigate('/')} />
-          <h1 className="font-bold text-2xl text-white">LOMC Chatbot</h1>
+          <h1 className="font-bold text-2xl text-white">Letter's of Map Change Chatbot</h1>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative">
@@ -78,7 +40,7 @@ export const Header = () => {
                   <button
                     key={agent.id}
                     onClick={() => {
-                      setSelectedAgent(agent);
+                      changeSelectedAgent(agent);
                       setIsDropdownOpen(false);
                     }}
                     className={`cursor-pointer w-full flex items-center gap-3 px-4 py-3 transition-colors ${

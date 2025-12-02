@@ -31,7 +31,14 @@ export const Main = ({ isDarkMode }: MainProps) => {
   const pills = [
     { id: 2, label: 'Summarize', text: 'Summarize the entire proposal and check for key points, included parties, and any notable details', color: 'grey' },
     { id: 1, label: 'Tie-Ins', text: 'Analyze the upstream and downstream tie-ins with existing infrastructure', color: 'grey' },
-    { id: 3, label: 'Requirements', text: 'Check for visibility of license number, signature number, seal, and other regulatory markings', color: 'grey' }
+    { id: 3, label: 'Requirements', text: 'Check for visibility of license number, signature number, seal, and other regulatory markings', color: 'grey' },
+    { id: 4, label: 'Issues', text: 'Identify any noticeable issues or concerns within the proposal', color: 'grey' },
+    { id: 5, label: 'Satisfaction', text: 'Determine the current satisfaction rating for this proposal based on recent reviews', color: 'grey' },
+    { id: 7, label: 'Compliance', text: 'Verify compliance with the latest FEMA guidelines and local regulations', color: 'grey' },
+    { id: 8, label: 'Environmental Impact', text: 'Assess any environmental impact statements or considerations included in the proposal', color: 'grey' },
+    { id: 9, label: 'Cost Analysis', text: 'Provide a brief cost analysis based on the figures presented in the proposal', color: 'grey' },
+    { id: 10, label: 'Timeline', text: 'Outline the proposed timeline and any critical milestones mentioned', color: 'grey' },
+    { id: 11, label: 'Parties', text: 'Identify all parties involved in the proposal and their roles', color: 'grey' },
   ] satisfies Pill[];
 
   return (

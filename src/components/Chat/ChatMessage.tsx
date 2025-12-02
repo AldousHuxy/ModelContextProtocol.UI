@@ -1,3 +1,4 @@
+import { useAgent } from '@/context/AgentContext';
 import { useRef, useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
@@ -17,6 +18,7 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
   const { register, handleSubmit, reset, setValue } = useForm<ChatMessageForm>();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const { selectedAgent } = useAgent();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -123,7 +125,7 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
                 ? 'bg-gray-700 text-gray-100 focus:bg-gray-600' 
                 : 'bg-gray-50 text-gray-800 focus:bg-white'
             }`}
-            placeholder="Type your message..."
+            placeholder={`Type your message to ${selectedAgent.shortName}...`}
             {...register('message')}
           />
           <input
