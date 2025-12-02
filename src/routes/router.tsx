@@ -11,5 +11,8 @@ export const router = createBrowserRouter(
         <Route path={PATHS.HOME} element={<Home />} />
         <Route path={PATHS.SETTINGS} element={<Settings />} />
     </Route>
-  )
+  ),
+  {
+    basename: '/ModelContextProtocol.UI'
+  }
 );
