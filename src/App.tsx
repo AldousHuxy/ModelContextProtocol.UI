@@ -13,7 +13,7 @@ const App = () => {
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <BrowserRouter basename="/ModelContextProtocol.UI">
+    <BrowserRouter>
       <div className={`flex flex-col h-screen overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-slate-50'}`}>
         <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <div className="flex-1 overflow-hidden relative">
