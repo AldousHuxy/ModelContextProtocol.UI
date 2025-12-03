@@ -4,7 +4,12 @@ import { useModeContext } from '@/context/ModeContext';
 import { useAgent } from '@/context/AgentContext';
 import PATHS from '@/routes';
 
-export const Navbar = () => {
+type NavbarProps = {
+  open: boolean
+  setOpen: (open: boolean) => void
+};
+
+export const Navbar = ({ open, setOpen }: NavbarProps) => {
   const { isDarkMode, toggleDarkMode } = useModeContext();
   const { pathname } = useLocation();
   const isSettingsPage = pathname === PATHS.SETTINGS;
@@ -14,7 +19,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className={`flex items-center justify-between gap-4 p-4 transition-colors duration-300 ${isDarkMode ? 'bg-slate-700' : 'bg-slate-400'}`}>
+    <nav className={`flex items-center justify-between gap-4 p-4 transition-colors duration-300 ${isDarkMode ? 'bg-slate-700' : 'bg-slate-700'}`}>
         <div className="flex items-center gap-4">
           <h1 className="font-bold text-lg text-white">LOMC Chatbot</h1>
         </div>
@@ -90,6 +95,22 @@ export const Navbar = () => {
             ) : (
               <svg className="w-6 h-6 text-slate-200" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            )}
+          </button>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="cursor-pointer p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+            aria-label="Toggle Sidebar"
+          >
+            {isDarkMode ? (
+              <svg className="w-6 h-6 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>

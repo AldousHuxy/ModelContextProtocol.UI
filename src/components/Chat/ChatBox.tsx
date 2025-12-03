@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { Message } from '@/types/mesage';
 import { ChatMessageBox } from './ChatMessageBox';
 
@@ -7,12 +8,23 @@ type ChatBoxProps = {
 };
 
 export const ChatBox = ({ messages, isDarkMode }: ChatBoxProps) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
-    <div className={`flex flex-col gap-3 sm:gap-4 w-full p-4 sm:p-6 rounded-2xl shadow-lg border h-full overflow-y-auto scrollbar-smooth transition-colors duration-300 ${
-      isDarkMode 
-        ? 'bg-gray-800 border-gray-700' 
-        : 'bg-white border-gray-100'
-    }`}>
+    <div 
+      ref={scrollRef}
+      className={`flex flex-col gap-3 sm:gap-4 w-full p-4 sm:p-6 rounded-2xl shadow-lg border h-full overflow-y-auto scrollbar-smooth transition-colors duration-300 ${
+        isDarkMode 
+          ? 'bg-gray-800 border-gray-700' 
+          : 'bg-white border-gray-100'
+      }`}
+    >
       <div className="flex flex-col gap-3 sm:gap-4 pb-4">
         {messages.map(msg => <ChatMessageBox key={msg.id} {...msg} isDarkMode={isDarkMode} />)}
       </div>

@@ -41,11 +41,13 @@ export const Main = () => {
   ] satisfies Pill[];
 
   return (
-    <main className="h-full flex flex-col p-4 sm:p-6 gap-3 sm:gap-4">
-        <div className="flex-1 min-h-0">
+    <main className="h-full flex flex-col p-4 sm:p-6 gap-3 sm:gap-4 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-hidden">
           <ChatBox messages={messages} isDarkMode={isDarkMode} />
         </div>
-        <ChatMessage isDarkMode={isDarkMode} pills={pills} />
+        <div className="flex-shrink-0">
+          <ChatMessage isDarkMode={isDarkMode} pills={pills} />
+        </div>
     </main>
   );
 }

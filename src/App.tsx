@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className={`flex flex-col h-screen overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-slate-50'}`}>
       <Header />
-      <Navbar />
+      <Navbar open={isSidebarOpen} setOpen={setIsSidebarOpen} />
       <div className="flex-1 overflow-hidden relative">
         <div className={`h-full transition-all duration-300 ${isSidebarOpen ? 'lg:mr-80' : 'mr-0'}`}>
           <Outlet />

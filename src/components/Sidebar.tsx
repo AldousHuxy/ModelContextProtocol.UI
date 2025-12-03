@@ -44,30 +44,6 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 
   return (
     <>
-      {/* Floating tab button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed top-1/2 -translate-y-1/2 z-40 transition-all duration-300 ${
-          isOpen ? 'right-80' : 'right-0'
-        } ${
-          isDarkMode 
-            ? 'bg-gray-800 hover:bg-gray-700 text-white' 
-            : 'bg-white hover:bg-gray-50 text-gray-800'
-        } shadow-lg rounded-l-xl px-3 py-6 border-l border-t border-b ${
-          isDarkMode ? 'border-gray-700' : 'border-gray-200'
-        }`}
-        aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
-      >
-        <svg
-          className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
       {/* Sidebar panel */}
       <div
         className={`absolute top-0 right-0 h-full w-80 z-30 shadow-2xl transition-transform duration-300 ${
@@ -84,7 +60,7 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
             <h2 className={`text-lg font-bold ${
               isDarkMode ? 'text-white' : 'text-gray-800'
             }`}>
-              LOMC Files
+              LOMC Explorer
             </h2>
             <p className={`text-xs mt-1 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'

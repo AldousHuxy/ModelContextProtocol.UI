@@ -57,9 +57,13 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
   };
 
   return (
-    <div className="space-y-2">
+    <div className={`rounded-2xl shadow-lg border transition-all ${
+      isDarkMode 
+        ? 'bg-gray-800 border-gray-700' 
+        : 'bg-white border-gray-100'
+    }`}>
       {/* Suggestion Pills */}
-      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
+      <div className="flex gap-2 overflow-x-auto p-4 pb-3 scrollbar-thin">
         {pills.map(pill => (
           <button
             key={pill.id}
@@ -78,9 +82,12 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
         ))}
       </div>
 
+      {/* Divider */}
+      <div className={`h-px mx-4 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />
+
       {/* File preview */}
       {selectedFile && (
-        <div className={`flex items-center justify-between gap-3 px-4 py-2 rounded-xl transition-all ${
+        <div className={`flex items-center justify-between gap-3 mx-4 mt-3 px-4 py-2 rounded-xl transition-all ${
           isDarkMode 
             ? 'bg-gray-700 border border-gray-600' 
             : 'bg-gray-50 border border-gray-200'
@@ -114,11 +121,7 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
       )}
 
       {/* Message form */}
-      <form onSubmit={handleSubmit(onSubmit)} className={`flex items-center gap-3 p-4 rounded-2xl shadow-lg border transition-all hover:shadow-xl ${
-        isDarkMode 
-          ? 'bg-gray-800 border-gray-700' 
-          : 'bg-white border-gray-100'
-      }`}>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-3 p-4">
           <input 
             type="text"
             className={`flex-1 px-4 py-3 border-0 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-mhfd-blue transition-all ${
