@@ -154,7 +154,7 @@ export const ChatMessage = ({ isDarkMode, pills }: ChatMessageProps) => {
           </button>
           <button
             type="submit"
-            className="cursor-pointer px-6 py-3 border-2 border-mhfd-blue text-mhfd-blue font-medium rounded-xl hover:bg-mhfd-blue hover:text-white transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mhfd-blue focus:ring-offset-2"
+            className="cursor-pointer px-3 py-1 md:px-6 md:py-3 border-2 border-mhfd-blue text-mhfd-blue font-medium rounded-xl hover:bg-mhfd-blue hover:text-white transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mhfd-blue focus:ring-offset-2"
           >
             Send
           </button>

@@ -8,7 +8,7 @@ export const Main = () => {
   const { isDarkMode } = useModeContext();
 
   const messages = [
-    { id: 3, role: 'user', text: <>💾 24-08-0233R Lemon Gulch Reach 1 - [396 MB]</> },
+    { id: 2, role: 'user', text: <>💾 24-08-0233R Lemon Gulch Reach 1 - [396 MB]</> },
     { id: 3, role: 'user', text: <>Can you summarize the key points of this proposal?</> },
     { id: 6, role: 'ai', text: <>
         <div>This proposal focuses on the Lemon Gulch Reach 1 project, highlighting key aspects such as hydraulic and hydrologic models, proposed plans, FEMA MT-2 forms, comparison tables, and other relevant information including bridge details and effective data.</div>
