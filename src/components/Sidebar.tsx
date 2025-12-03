@@ -4,10 +4,9 @@ import { useModeContext } from '@/context/ModeContext';
 
 type SidebarProps = {
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
 };
 
-export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
+export const Sidebar = ({ isOpen }: SidebarProps) => {
   const { isDarkMode } = useModeContext();
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [isRunning, setIsRunning] = useState(false);

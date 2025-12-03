@@ -18,7 +18,7 @@ const App = () => {
         <div className={`h-full transition-all duration-300 ${isSidebarOpen ? 'lg:mr-80' : 'mr-0'}`}>
           <Outlet />
         </div>
-        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+        <Sidebar isOpen={isSidebarOpen} />
       </div>
       <Footer />
     </div>
