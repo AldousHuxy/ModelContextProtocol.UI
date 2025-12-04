@@ -8,14 +8,16 @@ type SidebarProps = {
 
 export const Sidebar = ({ isOpen }: SidebarProps) => {
   const { isDarkMode } = useModeContext();
-  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<string | string[] | null>(null);
+  const [parentDir, setParentDir] = useState<string>('24-08-0233R Lemon Gulch Reach 1');
   const [isRunning, setIsRunning] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const handleFileSelect = (filePath: string) => {
+  const handleFileSelect = (filePath: string | string[], newParentDir?: string) => {
     setSelectedFile(filePath);
-    console.log('Selected file:', filePath);
-    // TODO: Load file content via MCP
+    if (newParentDir) {
+      setParentDir(newParentDir);
+    }
   };
 
   const handleRun = () => {
@@ -64,30 +66,50 @@ export const Sidebar = ({ isOpen }: SidebarProps) => {
             <p className={`text-xs mt-1 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              24-08-0233R Lemon Gulch Reach 1
+              {parentDir}
             </p>
           </div>
 
           {/* File Browser */}
           <div className="flex-1 overflow-y-auto p-4">
-            <FileBrowser isDarkMode={isDarkMode} onFileSelect={handleFileSelect} />
+            <FileBrowser onFileSelect={handleFileSelect} />
           </div>
 
           {/* Selected File Info */}
-          {selectedFile && (
+          {selectedFile && Array.isArray(selectedFile) && selectedFile.length > 0 && (
             <div className={`p-4 border-t ${
               isDarkMode ? 'border-gray-700 bg-gray-700' : 'border-gray-200 bg-gray-50'
             }`}>
-              <p className={`text-xs font-medium mb-1 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
+              <div className="flex items-center justify-between mb-2">
+                <p className={`text-xs font-medium ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>
+                  Selected Files
+                </p>
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                  isDarkMode ? 'bg-mhfd-blue/20 text-mhfd-blue' : 'bg-mhfd-blue/10 text-mhfd-blue'
+                }`}>
+                  {selectedFile.length}
+                </span>
+              </div>
+              <div className={`max-h-32 overflow-y-auto space-y-1 ${
+                isDarkMode ? 'scrollbar-thin scrollbar-thumb-gray-600' : 'scrollbar-thin scrollbar-thumb-gray-300'
               }`}>
-                Selected:
-              </p>
-              <p className={`text-xs truncate ${
-                isDarkMode ? 'text-gray-400' : 'text-gray-700'
-              }`}>
-                {selectedFile}
-              </p>
+                {selectedFile.slice(0, 5).map((file, idx) => (
+                  <p key={idx} className={`text-xs truncate ${
+                    isDarkMode ? 'text-gray-400' : 'text-gray-700'
+                  }`}>
+                    {file.split('/').pop()}
+                  </p>
+                ))}
+                {selectedFile.length > 5 && (
+                  <p className={`text-xs italic ${
+                    isDarkMode ? 'text-gray-500' : 'text-gray-500'
+                  }`}>
+                    +{selectedFile.length - 5} more...
+                  </p>
+                )}
+              </div>
             </div>
           )}
 
@@ -125,7 +147,7 @@ export const Sidebar = ({ isOpen }: SidebarProps) => {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                   </svg>
-                  <span>Generate Report</span>
+                  <span>Check Completeness</span>
                 </>
               )}
             </button>

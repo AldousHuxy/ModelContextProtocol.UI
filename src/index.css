@@ -37,10 +37,12 @@
   background: #62b4cc;
   border-radius: 10px;
   transition: background 0.2s ease;
+  cursor: pointer;
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background: #80A7F7;
+  cursor: pointer;
 }
 
 /* Dark mode scrollbar */
