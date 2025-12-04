@@ -19,7 +19,7 @@ export const Navbar = ({ open, setOpen }: NavbarProps) => {
   const navigate = useNavigate();
 
   return (
-    <nav className={`flex items-center justify-between gap-4 p-4 transition-colors duration-300 ${isDarkMode ? 'bg-slate-700' : 'bg-slate-700'}`}>
+    <nav className={`flex items-center justify-between gap-4 p-4 transition-colors duration-300 ${isDarkMode ? 'bg-green-700' : 'bg-green-700'}`}>
         <div className="flex items-center gap-4">
           <h1 className="font-bold text-lg text-white">LOMC Chatbot</h1>
         </div>
